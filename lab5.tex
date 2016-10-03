@@ -223,178 +223,111 @@ From the pictures, we can see that our knee voltage is around 0.45V, which is co
 
 
 
-\section{Activity II - Building a Circular Buffer VI for Continuous Analog Input Monitoring}
+\section{Activity II - Fitting Your IV Measurements to the Shockley Diode Equation Using a LabVIEW Least-Squares Fitting Function}
 
 
 \begin{figure}[H]
  \begin{center}
-  \includegraphics[width=\linewidth/2]{act1bp}
-  \caption{The block diagram of the circular buffer VI for continuous analog input monitoring.}
-  \label{fig:act1bp}
- \end{center}
-\end{figure}
-
-\begin{figure}[H]
- \begin{center}
-  \includegraphics[width=\linewidth/2]{act2}
-  \caption{The front panel of the circular buffer VI for continuous analog input monitoring.}
+  \includegraphics[width=\linewidth/1]{act2}
+  \caption{The the front panel and block diagram for our fitting VI.}
   \label{fig:act2}
  \end{center}
 \end{figure}
 
-And we saved the data file as genericDAQ_DataFile
+The unit of the y axis in this picture should be mA, we forgot to modify it. And our fitting equation is $y=a*(e^{bx}-1)$, so if we compare that to $I_{\mathrm {D} }=I_{\mathrm {s} }*(e^{V_{\mathrm {D} }/ \eta V_{\mathrm {T} }}-1)$, we'll find that $I_{\mathrm {s} }=a=3.4 nA$ and $\eta=1/{bV_{\mathrm {T} }}=1/{21.92*0.026}=1.75$, which is consistent with what we expect($ \eta \approx 2$ and $I_{\mathrm {s} }\sim 1-5 nA$).
 
-\section{Activity III - Monitoring a Thermistor Using Your Circular Buffer VI and a Voltage Divider Circuit}
+PS: $T=300k$
 
-The relationship between {\displaystyle V_{\mathrm {Th} }, {\displaystyle R_{\mathrm {Th} }, {\displaystyle R_{\mathrm {1}\ } {\mathrm {and}\ }   {\displaystyle V_{\mathrm {1} } :
+$V_{\mathrm {T} }=k_{\mathrm {B} }T/e=1.38064852*10^{-23}*300/(1.6*10^{-19})=0.026$
 
 
-{\displaystyle V_{\mathrm {Th} }={\frac {R_{Th}}{R_{Th}+R_{1}}}\cdot V_{\mathrm {1} }} 
 
-\Rightarrow  {\displaystyle R_{\mathrm {Th} }={\frac {V_{Th}}{V_{1}-V_{Th}}}\cdot R_{\mathrm {1} }} 
+\section{Activity III - Measuring the Characteristics of the 1N4735A Zener Diode}
 
-{V_{\mathrm {1} }=2.5 V}
 
-{R_{\mathrm {1} }=10\ K\Omega}
-
-\Rightarrow  {\displaystyle R_{\mathrm {Th} }={\frac {V_{Th}}{2.5-V_{Th}}}\cdot 10000}  
-
-\
 
 \begin{figure}[H]
  \begin{center}
-  \includegraphics[width=\linewidth/2]{act3bp}
-  \caption{The block diagram of the the modified circular buffer VI .}
+  \includegraphics[width=\linewidth/1]{act3bp}
+  \caption{The block diagram of the VI.}
   \label{fig:act3bp}
  \end{center}
 \end{figure}
 
 \begin{figure}[H]
  \begin{center}
-  \includegraphics[width=\linewidth/2]{act3room}
-  \caption{The front panel of the the modified circular buffer VI with room temperature.}
-  \label{fig:act3room}
+  \includegraphics[width=\linewidth/1]{act3bias2}
+  \caption{The front panel of the forward bias IV measurements.}
+  \label{fig:act3bias2}
  \end{center}
 \end{figure}
 
 \begin{figure}[H]
  \begin{center}
-  \includegraphics[width=\linewidth/2]{act3finger}
-  \caption{The front panel of the the modified circular buffer VI with finger temperature.}
-  \label{fig:act3finger}
+  \includegraphics[width=\linewidth/1]{act3rev1}
+  \caption{The front panel of the reverse bias IV measurements.}
+  \label{fig:act3rev1}
  \end{center}
 \end{figure}
 
-As is seen from the pictures, the room temperature is about 25 $^{\circ}$C, which make sense. Then when we heated up the thermistor with our fingers, we could see the temperature increased and finally stopped at about 32.5 $^{\circ}$C. And if we remove our fingers, the temperature goes down and noise exists as the following picture shows.
-
 \begin{figure}[H]
  \begin{center}
-  \includegraphics[width=\linewidth/2]{act3noise}
-  \caption{The front panel of the the modified circular buffer VI with noise.}
-  \label{fig:act3noise}
+  \includegraphics[width=\linewidth/1]{act3vv}
+  \caption{The image of the data for the voltage regulation circuit.}
+  \label{fig:act3vv}
  \end{center}
 \end{figure}
 
-\section{Activity IV - Monitoring a Thermistor Using Your Circular Buffer VI and a Wheatstone Bridge Circuit}
-
-The following shows that when {\displaystyle V_{\mathrm {G}}=0} , {\mathrm {which\ is at\ the\ point\ of\ balance,\ the\ ratio\ of\ }} 
-
-{\displaystyle {\begin{aligned}{\frac {R_{2}}{R_{1}}}&={\frac {R_{x}}{R_{3}}}\\[4pt]\Rightarrow R_{x}&={\frac {R_{2}}{R_{1}}}\cdot R_{3}\end{aligned}}} :
+\section{Activity V - Building and Characterizing Some Important Diode-Based Circuits}
 
 \begin{figure}[H]
  \begin{center}
-  \includegraphics[width=\linewidth/2]{bridge}
-  \caption{Wheatstone bridge.}
-  \label{fig:bridge}
+  \includegraphics[width=\linewidth/1]{act5bp}
+  \caption{The block diagram of the VI.}
+  \label{fig:act3bp}
  \end{center}
 \end{figure}
 
- Kirchhoff's first rule \Rightarrow
- 
- {\displaystyle {\begin{aligned}I_{3}-I_{x}+I_{G}&=0\\
- 
- I_{1}-I_{2}-I_{G}&=0\end{aligned}}} 
- 
- Kirchhoff's second rule \Rightarrow
- 
- {\displaystyle {\begin{aligned}(I_{3}\cdot R_{3})-(I_{G}\cdot R_{G})-(I_{1}\cdot R_{1})&=0\\
- 
- (I_{x}\cdot R_{x})-(I_{2}\cdot R_{2})+(I_{G}\cdot R_{G})&=0\end{aligned}}}
- 
- {\displaystyle I_{\mathrm {G}}=0} \Rightarrow
- 
- {\displaystyle {\begin{aligned}I_{3}\cdot R_{3}&=I_{1}\cdot R_{1}\\
- 
- I_{x}\cdot R_{x}&=I_{2}\cdot R_{2}\end{aligned}}} 
- 
- \Rightarrow {\displaystyle R_{x}={{R_{2}\cdot I_{2}\cdot I_{3}\cdot R_{3}} \over {R_{1}\cdot I_{1}\cdot I_{x}}}} 
- 
- \because {\displaystyle I_{\mathrm {3}}=I_{\mathrm {x}}},\ {\displaystyle I_{\mathrm {1}}=I_{\mathrm {2}}}
- 
- \therefore {\displaystyle {\begin{aligned}{\frac {R_{2}}{R_{1}}}&={\frac {R_{x}}{R_{3}}}\\[4pt]\Rightarrow R_{x}&={\frac {R_{2}}{R_{1}}}\cdot R_{3}\end{aligned}}} ~\\
-
- And the following equation can also be derived：
- 
- {\displaystyle V_{G}=\left({R_{2} \over {R_{1}+R_{2}}}-{R_{x} \over {R_{x}+R_{3}}}\right)V} \\[2em]
-
- In this lab:~\\
- 
- \begin{figure}[H]
+\begin{figure}[H]
  \begin{center}
-  \includegraphics[width=\linewidth/2]{act4bridge}
-  \caption{activity 4: Wheatstone bridge.}
-  \label{fig:act4bridge}
+  \includegraphics[width=\linewidth/1]{act5acapac100Hz}
+  \caption{The front panel of the half-wave rectifier with the capacitor(100Hz).}
+  \label{fig:act5acapac100Hz}
  \end{center}
- \end{figure}
- 
-
- {\displaystyle V_{o}=\left({R_{1} \over {R_{4}+R_{1}}}-{R_{2} \over {R_{2}+R_{3}}}\right)V_{B}} 
- 
- \Rightarrow {\displaystyle V_{o}=\left({R \over {R+R}}-{R+\Delta R \over {R+\Delta R+R}}\right)V_{B}=\left({1 \over {2}}-(1-{R \over {2R+\Delta R}})\right)V_{B}=\left({-{1 \over {2}}}+{{1 \over {2}}({1 \over {1+{\Delta R \over {2R}}}})\right)V_{B}} 
- 
- We know that when x\textless\textless 1, (1+x)^\alpha \approx 1+\alpha x,\ {\mathrm {to\ lowest\ order\ in\ x}}
- 
- So {\displaystyle \left(1+{\Delta R \over {2R}}\right)^{-1}} \approx {\displaystyle 1-{\Delta R \over {2R}}}
- 
- \Rightarrow {\displaystyle V_{o} \approx \left({-{1 \over {2}}}+{{1 \over {2}}(1-{\Delta R \over {2R}}}})\right)V_{B}=-{\Delta R \over {4R}}V_{B}} ,\ {\mathrm {to\ lowest\ order\ in\ \Delta R}}
- 
- \begin{figure}[H]
- \begin{center}
-  \includegraphics[width=\linewidth/2]{act4room}
-  \caption{The front panel of the VI with room temperature.}
-  \label{fig:act4room}
- \end{center}
- \end{figure}
- 
- \begin{figure}[H]
- \begin{center}
-  \includegraphics[width=\linewidth/2]{act4finger}
-  \caption{The front panel of the VI with finger temperature.}
-  \label{fig:act4finger}
- \end{center}
- \end{figure}
- 
- \begin{figure}[H]
- \begin{center}
-  \includegraphics[width=\linewidth/2]{act4noise}
-  \caption{The front panel of the VI with noise.}
-  \label{fig:act4noise}
- \end{center}
- \end{figure}
-
-By using the way of Wheatstone bridge circuit, which is, after we’ve achieved the null condition with the thermistor at ambient temperatures, we hooked up an amplifier to measure Vo. As seen from the pictures, this gives us much greater voltage resolution and hence a much greater temperature resolution. Our noise of the temperature showed that the resolution is around 0.06 $^{\circ}$C before, but it decreased to 0.005 $^{\circ}$C after. So the temperature change we think we could resolve for the present configuration is as small as 0.005 $^{\circ}$C.
-
-\section{Addendum to Lab 4}
+\end{figure}
 
 \begin{figure}[H]
  \begin{center}
-  \includegraphics[width=\linewidth/2]{act4add}
-  \caption{The front panel and the block diagram of the VI to plot the data from a previously saved text file.}
-  \label{fig:act4add}
+  \includegraphics[width=\linewidth/1]{act5anocapac100Hz}
+  \caption{The front panel of the half-wave rectifier without the capacitor(100Hz).}
+  \label{fig:act5anocapac100Hz}
  \end{center}
- \end{figure}
+\end{figure}
 
-The result is the same as what we got in the previous section.
+\begin{figure}[H]
+ \begin{center}
+  \includegraphics[width=\linewidth/1]{act5b10Hz4v-6v}
+  \caption{The front panel of the diode clipper(V1=4V, V2=-6V).}
+  \label{fig:act5b10Hz4v-6v}
+ \end{center}
+\end{figure}
+
+\begin{figure}[H]
+ \begin{center}
+  \includegraphics[width=\linewidth/1]{act5c10Hzcapac}
+  \caption{The front panel of the full-wave rectifier with the capacitor(10Hz).}
+  \label{fig:act5c10Hzcapac}
+ \end{center}
+\end{figure}
+
+\begin{figure}[H]
+ \begin{center}
+  \includegraphics[width=\linewidth/1]{act5c10Hznocapac}
+  \caption{The front panel of the full-wave rectifier without the capacitor(10Hz).}
+  \label{fig:act5c10Hznocapac}
+ \end{center}
+\end{figure}
+
 
 
 \end{document}
